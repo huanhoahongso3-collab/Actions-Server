@@ -15,54 +15,29 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags
           token: ${{ secrets.FINE_GRAINED_PAT }}  # Use fine-grained PAT for checkout
-      - name: Set up OpenJDK 8
+      - name: Set up OpenJDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '8'
+          java-version: '21'
           distribution: 'adopt'
       - name: Debug - List directory contents
         run: ls -la
-      - name: Run Spigot and playit with 30-second commits and workflow deletion
+      - name: Run Spigot with 30-second commits and workflow deletion
         if: "!contains(github.event.head_commit.message, 'Auto commit every 30 seconds')"
         env:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }}
-          PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
-          CF_TUNNEL_CERT: ${{secrets.CF_CERT}}
-          CF_TUNNEL_UUID: ${{secrets.CF_TUNNEL_UUID_1}}
-          CF_TUNNEL_UUID_CONTENT: ${{secrets.CF_TUNNEL_UUID_CONTENT}}
-
         run: |
-          curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
-          echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared jammy main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
-          sudo apt-get update && sudo apt-get install cloudflared
-          cd $GITHUB_WORKSPACE
-          mkdir ~/.cloudflared
-          echo "${CF_TUNNEL_CERT}" > ~/.cloudflared/cert.pem
-          touch tunnel-config.yml
-          echo "${CF_TUNNEL_UUID_CONTENT}" > credentials.json
-          echo "url: tcp://localhost:25565" >> tunnel-config.yml
-          echo "tunnel: ${CF_TUNNEL_UUID}" >> tunnel-config.yml
-          echo "credentials-file: credentials.json" >> tunnel-config.yml
-          cloudflared tunnel --config tunnel-config.yml run ${CF_TUNNEL_UUID} &
-          PLAYIT_PID=$!
-
-          chmod +x playit-linux-amd64
-          echo "$PLAYIT_SECRET" > playit.toml
           echo "Starting Spigot..."
           java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar spigot.jar nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
           SPIGOT_PID=$!
-          echo "Spigot started with PID $SPIGOT_PID"    
-          echo "Cloudflare Tunnel started with PID $PLAYIT_PID"
+          echo "Spigot started with PID $SPIGOT_PID"
+
           # Function to commit and push changes
           commit_and_push() {
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
             git config --local user.name "github-actions[bot]"
             git add -A  # Stage all changes
-            git reset -- playit.toml  # Unstage playit.toml
-            git reset -- playit.log
-            git reset -- tunnel-config.yml
-            git reset -- credentials.json
             git commit -m "Auto commit every 30 seconds" || echo "No changes to commit"
             git push https://x-access-token:${FINE_GRAINED_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
           }
@@ -83,8 +58,8 @@ jobs:
             commit_and_push
             delete_auto_commit_workflows
             # Check if processes are still running
-            if ! kill -0 $SPIGOT_PID 2>/dev/null || ! kill -0 $PLAYIT_PID 2>/dev/null; then
-              echo "One of the processes has finished. Terminating the workflow."
+            if ! kill -0 $SPIGOT_PID 2>/dev/null; then
+              echo "Spigot process has finished. Terminating the workflow."
               break
             fi
           done
