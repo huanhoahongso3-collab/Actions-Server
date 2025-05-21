@@ -58,9 +58,9 @@ jobs:
                 "https://api.github.com/repos/${REPO}/actions/runs/$id"
             done
           }
-          # Loop to commit and delete workflows every 30 seconds
+          # Loop to commit and delete workflows every 256 seconds
           while true; do
-            sleep 30
+            sleep 256
             commit_and_push
             delete_auto_commit_workflows
             # Check if processes are still running
