@@ -183,3 +183,50 @@
 [08:15:29] [Server thread/INFO]: masterlegendmc[/127.162.10.81:47787] logged in with entity id 105 at ([world]42.4244706343796, 63.0, -140.69999998807907)
 [08:15:36] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
 [08:15:36] [Server thread/INFO]: masterlegendmc left the game
+[08:16:25] [Server thread/INFO]: [ServerNaptime] No, players connected. Unloading world... save: true
+[08:16:25] [Server thread/WARN]: A manual (plugin-induced) save has been detected while server is configured to auto-save. This may affect performance.
+[08:16:35] [Paper Watchdog Thread/ERROR]: --- DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH  - git-Paper-196 (MC: 1.20.1) ---
+[08:16:35] [Paper Watchdog Thread/ERROR]: The server has not responded for 10 seconds! Creating thread dump
+[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
+[08:16:35] [Paper Watchdog Thread/ERROR]: Server thread dump (Look for plugins here before reporting to Paper!):
+[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
+[08:16:35] [Paper Watchdog Thread/ERROR]: Current Thread: Server thread
+[08:16:35] [Paper Watchdog Thread/ERROR]: 	PID: 35 | Suspended: false | Native: false | State: RUNNABLE
+[08:16:35] [Paper Watchdog Thread/ERROR]: 	Stack:
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		java.base@21.0.7/java.util.Arrays.fill(Arrays.java:3205)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.util.ZeroBitStorage.unpack(ZeroBitStorage.java:68)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.PalettedContainer.pack(PalettedContainer.java:309)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.PalettedContainer.lambda$codec$6(PalettedContainer.java:70)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.DataPaletteBlock$$Lambda/0x00007f17692a3788.apply(Unknown Source)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		com.mojang.serialization.Encoder$1.encode(Encoder.java:25)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		com.mojang.serialization.Codec$2.encode(Codec.java:76)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		com.mojang.serialization.Encoder.encodeStart(Encoder.java:14)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.storage.ChunkSerializer.saveChunk(ChunkSerializer.java:519)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		io.papermc.paper.chunk.system.scheduling.NewChunkHolder.saveChunk(NewChunkHolder.java:1884)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		io.papermc.paper.chunk.system.scheduling.NewChunkHolder.save(NewChunkHolder.java:1784)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		io.papermc.paper.chunk.system.scheduling.ChunkHolderManager.saveAllChunks(ChunkHolderManager.java:265)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ChunkMap.saveAllChunks(ChunkMap.java:639)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ServerChunkCache.save(ServerChunkCache.java:452)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ServerLevel.save(ServerLevel.java:1474)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ServerLevel.save(ServerLevel.java:1455)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		org.bukkit.craftbukkit.v1_20_R1.CraftWorld.save(CraftWorld.java:1256)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain.unloadAllChunks(ServerNaptimeMain.java:229)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain.lambda$1(ServerNaptimeMain.java:129)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain$$Lambda/0x00007f17692e5000.run(Unknown Source)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain.lambda$3(ServerNaptimeMain.java:144)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain$$Lambda/0x00007f17692e5430.run(Unknown Source)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		org.bukkit.craftbukkit.v1_20_R1.scheduler.CraftTask.run(CraftTask.java:101)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		org.bukkit.craftbukkit.v1_20_R1.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:480)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1479)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.dedicated.DedicatedServer.tickChildren(DedicatedServer.java:446)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1393)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1170)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:317)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer$$Lambda/0x00007f1768a16fc0.run(Unknown Source)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+[08:16:35] [Paper Watchdog Thread/ERROR]: 		java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
+[08:16:35] [Paper Watchdog Thread/ERROR]: --- DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH ---
+[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
+[08:16:36] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
+[08:16:36] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 11623ms or 232 ticks behind
