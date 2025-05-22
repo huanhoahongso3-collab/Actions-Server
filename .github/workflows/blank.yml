@@ -36,7 +36,7 @@ jobs:
           echo "Playit agent started with PID $PLAYIT_PID"
 
           # Download Minecraft server JAR
-          LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar"
+          LINK="https://github.com/IzzelAliz/Arclight/releases/download/FeudalKings%2F1.0.0/arclight-fabric-1.21.1-1.0.0-3457560.jar"
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
