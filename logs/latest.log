@@ -1,249 +1,187 @@
-[08:14:53] [ServerMain/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[08:14:55] [ServerMain/INFO]: Loaded 7 recipes
-[08:14:55] [Server thread/INFO]: Starting minecraft server version 1.20.1
-[08:14:55] [Server thread/INFO]: Loading properties
-[08:14:55] [Server thread/INFO]: This server is running Paper version git-Paper-196 (MC: 1.20.1) (Implementing API version 1.20.1-R0.1-SNAPSHOT) (Git: 773dd72)
-[08:14:56] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[08:14:56] [Server thread/INFO]: Using 4 threads for Netty based IO
-[08:14:56] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
+[08:37:06] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[08:37:08] [ServerMain/INFO]: Loaded 1174 recipes
+[08:37:08] [ServerMain/INFO]: Loaded 1271 advancements
+[08:37:08] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[08:37:08] [Server thread/INFO]: Loading properties
+[08:37:08] [Server thread/INFO]: This server is running Paper version git-Paper-499 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 9de3f75 on ver/1.20.4)
+[08:37:09] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[08:37:09] [Server thread/INFO]: Using 4 threads for Netty based IO
+[08:37:09] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
     We recommend installing the spark profiler as a replacement: https://spark.lucko.me/
     For more information please visit: https://github.com/PaperMC/Paper/issues/8948
-[08:14:56] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
-[08:14:56] [Server thread/INFO]: Default game type: SURVIVAL
-[08:14:56] [Server thread/INFO]: Generating keypair
-[08:14:56] [Server thread/INFO]: Starting Minecraft server on *:25565
-[08:14:56] [Server thread/INFO]: Using default channel type
-[08:14:56] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[08:14:56] [Server thread/INFO]: Paper: Using OpenSSL 3.0.x (Linux x86_64) cipher from Velocity.
-[08:14:57] [Server thread/INFO]: [ServerNaptime] While no players online: Server will sleep every 2 ticks, and sleep will be 1000 milliseconds long.
-[08:14:57] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.2
-[08:14:57] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.2 is now loaded. Registering protocol transformers and injecting...
-[08:14:57] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
-[08:14:57] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
-[08:14:58] [Server thread/INFO]: [ViaBackwards] Loading translations...
-[08:14:58] [Server thread/INFO]: [ViaBackwards] Registering protocols...
-[08:14:58] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.2
-[08:14:58] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.3
-[08:14:58] [Server thread/INFO]: [ServerNaptime] Loading server plugin ServerNaptime v1.0
-[08:14:58] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[08:14:58] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.3
-[08:14:59] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.1.
-[08:14:59] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[08:14:59] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[08:14:59] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[08:14:59] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[08:14:59] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[08:14:59] [Server thread/INFO]: Preparing level "world"
-[08:14:59] [Server thread/INFO]: -------- World Settings For [world] --------
-[08:14:59] [Server thread/INFO]: View Distance: 10
-[08:14:59] [Server thread/INFO]: Simulation Distance: 5
-[08:14:59] [Server thread/INFO]: Item Merge Radius: 2.5
-[08:14:59] [Server thread/INFO]: Experience Merge Radius: 3.0
-[08:14:59] [Server thread/INFO]: Mob Spawn Range: 4
-[08:14:59] [Server thread/INFO]: Item Despawn Rate: 6000
-[08:14:59] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[08:14:59] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[08:14:59] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[08:14:59] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[08:14:59] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Cane Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Melon Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Potato Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: TorchFlower Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Vine Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: GlowBerry Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: PitcherPlant Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[08:14:59] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[08:14:59] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[08:14:59] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[08:14:59] [Server thread/INFO]: Max TNT Explosions: 100
-[08:14:59] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.3
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 7eb6dc6
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[08:14:59] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[08:14:59] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[08:14:59] [Server thread/INFO]: View Distance: 10
-[08:14:59] [Server thread/INFO]: Simulation Distance: 5
-[08:14:59] [Server thread/INFO]: Item Merge Radius: 2.5
-[08:14:59] [Server thread/INFO]: Experience Merge Radius: 3.0
-[08:14:59] [Server thread/INFO]: Mob Spawn Range: 4
-[08:14:59] [Server thread/INFO]: Item Despawn Rate: 6000
-[08:14:59] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[08:14:59] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[08:14:59] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[08:14:59] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[08:14:59] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Cane Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Melon Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Potato Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: TorchFlower Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Vine Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: GlowBerry Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: PitcherPlant Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[08:14:59] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[08:14:59] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[08:14:59] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[08:14:59] [Server thread/INFO]: Max TNT Explosions: 100
-[08:14:59] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[08:14:59] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[08:14:59] [Server thread/INFO]: View Distance: 10
-[08:14:59] [Server thread/INFO]: Simulation Distance: 5
-[08:14:59] [Server thread/INFO]: Item Merge Radius: 2.5
-[08:14:59] [Server thread/INFO]: Experience Merge Radius: 3.0
-[08:14:59] [Server thread/INFO]: Mob Spawn Range: 4
-[08:14:59] [Server thread/INFO]: Item Despawn Rate: 6000
-[08:14:59] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[08:14:59] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[08:14:59] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[08:14:59] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[08:14:59] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Cane Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Melon Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Potato Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: TorchFlower Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Vine Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: GlowBerry Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: PitcherPlant Growth Modifier: 100%
-[08:14:59] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[08:14:59] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[08:14:59] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[08:14:59] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[08:14:59] [Server thread/INFO]: Max TNT Explosions: 100
-[08:14:59] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[08:14:59] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[08:15:00] [Server thread/INFO]: Time elapsed: 171 ms
-[08:15:00] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[08:15:00] [Server thread/INFO]: Time elapsed: 60 ms
-[08:15:00] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[08:15:00] [Server thread/INFO]: Time elapsed: 60 ms
-[08:15:00] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.2
-[08:15:00] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.20-1.20.1 (763)
-[08:15:00] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.2
-[08:15:00] [Server thread/INFO]: [ServerNaptime] Enabling ServerNaptime v1.0
-[08:15:00] [Server thread/INFO]: Running delayed init tasks
-[08:15:00] [Server thread/INFO]: Done (4.733s)! For help, type "help"
-[08:15:00] [Server thread/INFO]: Timings Reset
-[08:15:00] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
-[08:15:29] [User Authenticator #0/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
-[08:15:29] [Server thread/INFO]: masterlegendmc joined the game
-[08:15:29] [Server thread/INFO]: masterlegendmc[/127.162.10.81:47787] logged in with entity id 105 at ([world]42.4244706343796, 63.0, -140.69999998807907)
-[08:15:36] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
-[08:15:36] [Server thread/INFO]: masterlegendmc left the game
-[08:16:25] [Server thread/INFO]: [ServerNaptime] No, players connected. Unloading world... save: true
-[08:16:25] [Server thread/WARN]: A manual (plugin-induced) save has been detected while server is configured to auto-save. This may affect performance.
-[08:16:35] [Paper Watchdog Thread/ERROR]: --- DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH  - git-Paper-196 (MC: 1.20.1) ---
-[08:16:35] [Paper Watchdog Thread/ERROR]: The server has not responded for 10 seconds! Creating thread dump
-[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
-[08:16:35] [Paper Watchdog Thread/ERROR]: Server thread dump (Look for plugins here before reporting to Paper!):
-[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
-[08:16:35] [Paper Watchdog Thread/ERROR]: Current Thread: Server thread
-[08:16:35] [Paper Watchdog Thread/ERROR]: 	PID: 35 | Suspended: false | Native: false | State: RUNNABLE
-[08:16:35] [Paper Watchdog Thread/ERROR]: 	Stack:
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		java.base@21.0.7/java.util.Arrays.fill(Arrays.java:3205)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.util.ZeroBitStorage.unpack(ZeroBitStorage.java:68)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.PalettedContainer.pack(PalettedContainer.java:309)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.PalettedContainer.lambda$codec$6(PalettedContainer.java:70)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.DataPaletteBlock$$Lambda/0x00007f17692a3788.apply(Unknown Source)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		com.mojang.serialization.Encoder$1.encode(Encoder.java:25)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		com.mojang.serialization.Codec$2.encode(Codec.java:76)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		com.mojang.serialization.Encoder.encodeStart(Encoder.java:14)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.world.level.chunk.storage.ChunkSerializer.saveChunk(ChunkSerializer.java:519)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		io.papermc.paper.chunk.system.scheduling.NewChunkHolder.saveChunk(NewChunkHolder.java:1884)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		io.papermc.paper.chunk.system.scheduling.NewChunkHolder.save(NewChunkHolder.java:1784)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		io.papermc.paper.chunk.system.scheduling.ChunkHolderManager.saveAllChunks(ChunkHolderManager.java:265)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ChunkMap.saveAllChunks(ChunkMap.java:639)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ServerChunkCache.save(ServerChunkCache.java:452)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ServerLevel.save(ServerLevel.java:1474)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.level.ServerLevel.save(ServerLevel.java:1455)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		org.bukkit.craftbukkit.v1_20_R1.CraftWorld.save(CraftWorld.java:1256)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain.unloadAllChunks(ServerNaptimeMain.java:229)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain.lambda$1(ServerNaptimeMain.java:129)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain$$Lambda/0x00007f17692e5000.run(Unknown Source)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain.lambda$3(ServerNaptimeMain.java:144)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		ServerNaptime.jar//gvk.ServerNaptimeMain$$Lambda/0x00007f17692e5430.run(Unknown Source)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		org.bukkit.craftbukkit.v1_20_R1.scheduler.CraftTask.run(CraftTask.java:101)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		org.bukkit.craftbukkit.v1_20_R1.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:480)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1479)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.dedicated.DedicatedServer.tickChildren(DedicatedServer.java:446)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1393)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1170)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:317)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		net.minecraft.server.MinecraftServer$$Lambda/0x00007f1768a16fc0.run(Unknown Source)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
-[08:16:35] [Paper Watchdog Thread/ERROR]: 		java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
-[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
-[08:16:35] [Paper Watchdog Thread/ERROR]: --- DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH ---
-[08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
-[08:16:36] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
-[08:16:36] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 11623ms or 232 ticks behind
-[08:17:10] [User Authenticator #1/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
-[08:17:10] [Server thread/INFO]: masterlegendmc joined the game
-[08:17:10] [Server thread/INFO]: masterlegendmc[/127.162.10.81:56987] logged in with entity id 108 at ([world]42.4244706343796, 63.0, -140.69999998807907)
-[08:18:17] [Server thread/INFO]: masterlegendmc discovered the floor was lava
-[08:19:04] [Server thread/INFO]: masterlegendmc fell from a high place
-[08:19:26] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
-[08:19:26] [Server thread/INFO]: masterlegendmc left the game
-[08:19:26] [Server thread/INFO]: [ServerNaptime] No, players connected. Unloading world... save: true
-[08:19:26] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
-[08:19:33] [User Authenticator #2/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
-[08:19:33] [Server thread/INFO]: masterlegendmc joined the game
-[08:19:33] [Server thread/INFO]: masterlegendmc[/127.162.10.81:56199] logged in with entity id 281 at ([world]126.64614155747513, 29.789407175113713, -102.53529148006032)
-[08:19:46] [Server thread/INFO]: masterlegendmc hit the ground too hard
-[08:19:55] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
-[08:19:55] [Server thread/INFO]: masterlegendmc left the game
-[08:19:55] [Server thread/INFO]: [ServerNaptime] No, players connected. Unloading world... save: true
-[08:19:56] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
+[08:37:09] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
+[08:37:10] [Server thread/INFO]: Default game type: SURVIVAL
+[08:37:10] [Server thread/INFO]: Generating keypair
+[08:37:10] [Server thread/INFO]: Starting Minecraft server on *:25565
+[08:37:10] [Server thread/INFO]: Using default channel type
+[08:37:10] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[08:37:10] [Server thread/INFO]: Paper: Using OpenSSL 3.0.x (Linux x86_64) cipher from Velocity.
+[08:37:10] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.2
+[08:37:10] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.2 is now loaded. Registering protocol transformers and injecting...
+[08:37:11] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
+[08:37:11] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
+[08:37:11] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[08:37:11] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[08:37:12] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.2
+[08:37:12] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.3
+[08:37:12] [Server thread/INFO]: [FreezeHibernate] Loading server plugin FreezeHibernate v1.0
+[08:37:12] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[08:37:12] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.3
+[08:37:12] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[08:37:12] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[08:37:12] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[08:37:12] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[08:37:12] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[08:37:12] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[08:37:12] [Server thread/INFO]: Preparing level "world"
+[08:37:12] [Server thread/INFO]: -------- World Settings For [world] --------
+[08:37:12] [Server thread/INFO]: View Distance: 32
+[08:37:12] [Server thread/INFO]: Simulation Distance: 16
+[08:37:12] [Server thread/INFO]: Experience Merge Radius: 3.0
+[08:37:12] [Server thread/INFO]: Mob Spawn Range: 4
+[08:37:12] [Server thread/INFO]: Item Despawn Rate: 6000
+[08:37:12] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
+[08:37:12] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[08:37:12] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Cane Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Melon Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Beetroot Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Carrot Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Potato Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: TorchFlower Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Vine Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Bamboo Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Kelp Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: CaveVines Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: GlowBerry Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: PitcherPlant Growth Modifier: 100%
+[08:37:12] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
+[08:37:12] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
+[08:37:12] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
+[08:37:12] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
+[08:37:12] [Server thread/INFO]: Max TNT Explosions: 100
+[08:37:12] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[08:37:12] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[08:37:12] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[08:37:12] [Server thread/INFO]: Item Merge Radius: 2.5
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.3
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 7eb6dc6
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[08:37:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[08:37:13] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[08:37:13] [Server thread/INFO]: View Distance: 32
+[08:37:13] [Server thread/INFO]: Simulation Distance: 16
+[08:37:13] [Server thread/INFO]: Experience Merge Radius: 3.0
+[08:37:13] [Server thread/INFO]: Mob Spawn Range: 4
+[08:37:13] [Server thread/INFO]: Item Despawn Rate: 6000
+[08:37:13] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
+[08:37:13] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[08:37:13] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Cane Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Melon Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Beetroot Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Carrot Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Potato Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: TorchFlower Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Vine Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Bamboo Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Kelp Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: CaveVines Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: GlowBerry Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: PitcherPlant Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
+[08:37:13] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
+[08:37:13] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
+[08:37:13] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
+[08:37:13] [Server thread/INFO]: Max TNT Explosions: 100
+[08:37:13] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[08:37:13] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[08:37:13] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[08:37:13] [Server thread/INFO]: Item Merge Radius: 2.5
+[08:37:13] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[08:37:13] [Server thread/INFO]: View Distance: 32
+[08:37:13] [Server thread/INFO]: Simulation Distance: 16
+[08:37:13] [Server thread/INFO]: Experience Merge Radius: 3.0
+[08:37:13] [Server thread/INFO]: Mob Spawn Range: 4
+[08:37:13] [Server thread/INFO]: Item Despawn Rate: 6000
+[08:37:13] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
+[08:37:13] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[08:37:13] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Cane Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Melon Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Beetroot Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Carrot Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Potato Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: TorchFlower Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Vine Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Bamboo Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Kelp Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: CaveVines Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: GlowBerry Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: PitcherPlant Growth Modifier: 100%
+[08:37:13] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
+[08:37:13] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
+[08:37:13] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
+[08:37:13] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
+[08:37:13] [Server thread/INFO]: Max TNT Explosions: 100
+[08:37:13] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[08:37:13] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[08:37:13] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[08:37:13] [Server thread/INFO]: Item Merge Radius: 2.5
+[08:37:13] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[08:37:13] [Server thread/INFO]: Time elapsed: 182 ms
+[08:37:13] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[08:37:13] [Server thread/INFO]: Time elapsed: 57 ms
+[08:37:13] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[08:37:13] [Server thread/INFO]: Time elapsed: 114 ms
+[08:37:13] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.2
+[08:37:13] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.20.3-1.20.4 (765)
+[08:37:13] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.2
+[08:37:13] [Server thread/INFO]: [FreezeHibernate] Enabling FreezeHibernate v1.0
+[08:37:14] [Server thread/INFO]: [FreezeHibernate] Server is frozen until a player joins.
+[08:37:14] [Server thread/INFO]: Running delayed init tasks
+[08:37:14] [Server thread/INFO]: Done (5.486s)! For help, type "help"
+[08:37:14] [Server thread/INFO]: Timings Reset
+[08:37:14] [Craft Scheduler Thread - 1 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[08:37:29] [User Authenticator #0/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
+[08:37:29] [Server thread/INFO]: [FreezeHibernate] A player joined. Server is now unfrozen.
+[08:37:29] [Server thread/INFO]: masterlegendmc joined the game
+[08:37:29] [Server thread/INFO]: masterlegendmc[/127.162.10.81:43661] logged in with entity id 49 at ([world]75.3287665593098, 68.0, -101.74750324561465)
+[08:37:40] [Server thread/INFO]: masterlegendmc issued server command: /plugins
+[08:38:50] [Tuinity Chunk System Worker #0/ERROR]: Detected setBlock in a far chunk [17, -25], pos: BlockPosition{x=282, y=-3, z=-385}, status: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:large_dripstone]
