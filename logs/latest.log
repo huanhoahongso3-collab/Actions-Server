@@ -185,3 +185,6 @@
 [08:37:29] [Server thread/INFO]: masterlegendmc[/127.162.10.81:43661] logged in with entity id 49 at ([world]75.3287665593098, 68.0, -101.74750324561465)
 [08:37:40] [Server thread/INFO]: masterlegendmc issued server command: /plugins
 [08:38:50] [Tuinity Chunk System Worker #0/ERROR]: Detected setBlock in a far chunk [17, -25], pos: BlockPosition{x=282, y=-3, z=-385}, status: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:large_dripstone]
+[08:48:31] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
+[08:48:31] [Server thread/INFO]: [FreezeHibernate] Last player disconnected. Server is now frozen.
+[08:48:31] [Server thread/INFO]: masterlegendmc left the game
