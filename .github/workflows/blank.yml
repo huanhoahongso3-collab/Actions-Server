@@ -68,7 +68,7 @@ jobs:
 
           # Loop to commit and delete workflows every 156 seconds
           while true; do
-            sleep 156
+            sleep 30
             commit_and_push
             delete_auto_commit_workflows
             # Check if processes are still running
