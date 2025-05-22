@@ -181,3 +181,8 @@
 [08:08:29] [User Authenticator #0/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
 [08:08:29] [Server thread/INFO]: masterlegendmc joined the game
 [08:08:29] [Server thread/INFO]: masterlegendmc[/127.162.10.81:47761] logged in with entity id 100 at ([world]107.36197611735561, 77.0, -91.69999998807907)
+[08:10:29] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
+[08:10:29] [Server thread/INFO]: masterlegendmc left the game
+[08:10:29] [Server thread/INFO]: [ServerNaptime] No, players connected. Unloading world... save: true
+[08:10:29] [Server thread/WARN]: A manual (plugin-induced) save has been detected while server is configured to auto-save. This may affect performance.
+[08:10:31] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
