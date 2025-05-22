@@ -1,8 +1,6 @@
 name: CI
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */5 * * *' # Run every 5 hours
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +34,7 @@ jobs:
           echo "Playit agent started with PID $PLAYIT_PID"
 
           # Download Minecraft server JAR
-          LINK="https://github.com/IzzelAliz/Arclight/releases/download/FeudalKings%2F1.0.0/arclight-fabric-1.21.1-1.0.0-3457560.jar"
+          LINK="https://github.com/IzzelAliz/Arclight/releases/download/FeudalKings%2F1.0.0/arclight-neoforge-1.21.1-1.0.0-3457560.jar"
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
@@ -109,7 +107,7 @@ jobs:
 
           # Loop to commit and delete workflows every 30 seconds
           while true; do
-            sleep 30
+            sleep 156
             commit_and_push
             delete_auto_commit_workflows
             
