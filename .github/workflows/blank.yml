@@ -35,6 +35,8 @@ jobs:
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
+          chmod +x playit-linux-amd64
+          echo "$PLAYIT_SECRET" > playit.toml
           echo "Starting Minecraft server ($JAR)..."
           # The `&` at the end runs the server in the background.
           # The `SPIGOT_PID=$!` captures the PID of the background process.
