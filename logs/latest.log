@@ -235,3 +235,11 @@
 [08:17:10] [Server thread/INFO]: masterlegendmc[/127.162.10.81:56987] logged in with entity id 108 at ([world]42.4244706343796, 63.0, -140.69999998807907)
 [08:18:17] [Server thread/INFO]: masterlegendmc discovered the floor was lava
 [08:19:04] [Server thread/INFO]: masterlegendmc fell from a high place
+[08:19:26] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
+[08:19:26] [Server thread/INFO]: masterlegendmc left the game
+[08:19:26] [Server thread/INFO]: [ServerNaptime] No, players connected. Unloading world... save: true
+[08:19:26] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
+[08:19:33] [User Authenticator #2/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
+[08:19:33] [Server thread/INFO]: masterlegendmc joined the game
+[08:19:33] [Server thread/INFO]: masterlegendmc[/127.162.10.81:56199] logged in with entity id 281 at ([world]126.64614155747513, 29.789407175113713, -102.53529148006032)
+[08:19:46] [Server thread/INFO]: masterlegendmc hit the ground too hard
