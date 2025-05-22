@@ -230,3 +230,6 @@
 [08:16:35] [Paper Watchdog Thread/ERROR]: ------------------------------
 [08:16:36] [Server thread/INFO]: [ServerNaptime] No, players connected. Sleep cycle started...
 [08:16:36] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 11623ms or 232 ticks behind
+[08:17:10] [User Authenticator #1/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
+[08:17:10] [Server thread/INFO]: masterlegendmc joined the game
+[08:17:10] [Server thread/INFO]: masterlegendmc[/127.162.10.81:56987] logged in with entity id 108 at ([world]42.4244706343796, 63.0, -140.69999998807907)
