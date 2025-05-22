@@ -239,3 +239,23 @@
 [07:36:27] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] failed to exchange, to claim visit: https://playit.gg/mc/9149523c0da35402
 [07:36:30] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] trying to exchange claim code for secret
 [07:36:30] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] failed to exchange, to claim visit: https://playit.gg/mc/9149523c0da35402
+[07:36:33] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] trying to exchange claim code for secret
+[07:36:33] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] failed to exchange, to claim visit: https://playit.gg/mc/9149523c0da35402
+[07:36:36] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] trying to exchange claim code for secret
+[07:36:36] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] failed to exchange, to claim visit: https://playit.gg/mc/9149523c0da35402
+[07:36:39] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] trying to exchange claim code for secret
+[07:36:39] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] check secret
+[07:36:40] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:36:40] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
+[07:36:44] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:36:44] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
+[07:36:48] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:36:48] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
+[07:36:51] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:36:52] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
+[07:36:55] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:36:55] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
+[07:36:59] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:36:59] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
+[07:37:02] [Thread-10/INFO]: [gg.playit.minecraft.PlayitKeysSetup] create new minecraft java tunnel
+[07:37:03] [Thread-10/ERROR]: [gg.playit.minecraft.PlayitManager] got error during setup: gg.playit.api.ApiError: Api error code: 400, req: {"tunnel_type":"minecraft-java","port_type":"tcp","port_count":1,"local_ip":"127.0.0.1","local_port":null,"agent_id":"099804a5-fdf0-4f7c-8df1-aa96739c0e99","type":"create-tunnel"}, res: {"type":"error","code":400,"message":"account has ran out of ports"}
