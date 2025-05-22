@@ -26,18 +26,16 @@ jobs:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }}
         run: |
-          # Define the full download link for the PaperMC JAR
           PLAYIT_PID=$!
           LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar"
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
           chmod +x playit-linux-amd64
+  
           echo "$PLAYIT_SECRET" > playit.toml
           echo "Starting Minecraft server ($JAR)..."
-          # The `&` at the end runs the server in the background.
-          # The `SPIGOT_PID=$!` captures the PID of the background process.
-          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
+          ./playit-linux-amd64 & java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
           SPIGOT_PID=$!
           echo "Minecraft server started with PID $SPIGOT_PID"
 
