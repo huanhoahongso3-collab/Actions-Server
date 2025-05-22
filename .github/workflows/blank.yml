@@ -26,14 +26,10 @@ jobs:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
-          # Download playit-linux-amd64 agent
-          echo "Downloading playit-linux-amd64 agent..."
-          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
-          chmod +x playit-linux-amd64
-
           # Start playit agent in background
           # The user provided a hardcoded secret in the command, so we'll use that.
           # If playit.toml is truly needed, the secret should be written there.
+          chmod +x playit-linux-amd64
           echo "Starting playit agent..."
           ./playit-linux-amd64 --secret dba8668ae0b663e88ff9da28add6b73bee79dc86697bc897614a4906e4fd21d2 &
           PLAYIT_PID=$!
