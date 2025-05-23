@@ -1,17 +1,17 @@
-[14:34:09] [ServerMain/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[14:34:09] [ServerMain/WARN]: Missing data pack fabric
-[14:34:09] [ServerMain/INFO]: Found new data pack file/bukkit, loading it automatically
-[14:34:10] [ServerMain/INFO]: Loaded 7 recipes
-[14:34:11] [Server thread/INFO]: Starting minecraft server version 1.20.1
-[14:34:11] [Server thread/INFO]: Loading properties
-[14:34:11] [Server thread/INFO]: This server is running Paper version git-Paper-196 (MC: 1.20.1) (Implementing API version 1.20.1-R0.1-SNAPSHOT) (Git: 773dd72)
-[14:34:12] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[14:34:12] [Server thread/INFO]: Using 4 threads for Netty based IO
-[14:34:12] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
+[14:37:06] [ServerMain/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[14:37:06] [ServerMain/WARN]: Missing data pack fabric
+[14:37:06] [ServerMain/INFO]: Found new data pack file/bukkit, loading it automatically
+[14:37:08] [ServerMain/INFO]: Loaded 7 recipes
+[14:37:08] [Server thread/INFO]: Starting minecraft server version 1.20.1
+[14:37:08] [Server thread/INFO]: Loading properties
+[14:37:08] [Server thread/INFO]: This server is running Paper version git-Paper-196 (MC: 1.20.1) (Implementing API version 1.20.1-R0.1-SNAPSHOT) (Git: 773dd72)
+[14:37:09] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:37:09] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:37:09] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
     We recommend installing the spark profiler as a replacement: https://spark.lucko.me/
     For more information please visit: https://github.com/PaperMC/Paper/issues/8948
-[14:34:12] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
-[14:34:12] [Server thread/ERROR]: Encountered an unexpected exception
+[14:37:09] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
+[14:37:09] [Server thread/ERROR]: Encountered an unexpected exception
 org.spongepowered.configurate.serialize.SerializationException: [entities, spawning, monster-spawn-max-light-level] of type java.lang.Integer: java.lang.NumberFormatException: For input string: "default"
 	at org.spongepowered.configurate.serialize.NumericSerializers.parseNumber(NumericSerializers.java:346) ~[configurate-core-4.1.2.jar:?]
 	at org.spongepowered.configurate.serialize.NumericSerializers.lambda$static$9(NumericSerializers.java:254) ~[configurate-core-4.1.2.jar:?]
@@ -66,7 +66,7 @@ Caused by: java.lang.NumberFormatException: For input string: "default"
 	at java.lang.Integer.parseInt(Integer.java:662) ~[?:?]
 	at org.spongepowered.configurate.serialize.NumericSerializers.parseNumber(NumericSerializers.java:344) ~[configurate-core-4.1.2.jar:?]
 	... 20 more
-[14:34:12] [Server thread/ERROR]: 	Cause of unexpected exception was
+[14:37:09] [Server thread/ERROR]: 	Cause of unexpected exception was
 java.lang.NumberFormatException: For input string: "default"
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
 	at java.lang.Integer.parseInt(Integer.java:662) ~[?:?]
@@ -91,11 +91,11 @@ java.lang.NumberFormatException: For input string: "default"
 	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1100) ~[paper-1.20.1.jar:git-Paper-196]
 	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:317) ~[paper-1.20.1.jar:git-Paper-196]
 	at java.lang.Thread.run(Thread.java:1583) ~[?:?]
-[14:34:12] [Server thread/ERROR]: This crash report has been saved to: /home/runner/work/Actions-Server/Actions-Server/./crash-reports/crash-2025-05-23_14.34.12-server.txt
-[14:34:12] [Server thread/INFO]: Stopping server
-[14:34:12] [Server thread/INFO]: Saving players
-[14:34:12] [Server thread/INFO]: Saving worlds
-[14:34:12] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[14:34:12] [Server thread/INFO]: Flushing Chunk IO
-[14:34:12] [Server thread/INFO]: Closing Thread Pool
-[14:34:12] [Server thread/INFO]: Closing Server
+[14:37:10] [Server thread/ERROR]: This crash report has been saved to: /home/runner/work/Actions-Server/Actions-Server/./crash-reports/crash-2025-05-23_14.37.10-server.txt
+[14:37:10] [Server thread/INFO]: Stopping server
+[14:37:10] [Server thread/INFO]: Saving players
+[14:37:10] [Server thread/INFO]: Saving worlds
+[14:37:10] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[14:37:10] [Server thread/INFO]: Flushing Chunk IO
+[14:37:10] [Server thread/INFO]: Closing Thread Pool
+[14:37:10] [Server thread/INFO]: Closing Server
