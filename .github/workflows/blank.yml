@@ -2,11 +2,11 @@ name: CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,3,6,9,12,15,18,21 * * *' # Run at minute 0 past hour 0, 3, 6, 9, 12, 15, 18, and 21 UTC.
+    - cron: '0 0 * * *' # Run at minute 0 past hour 0 UTC every day.
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 185 # Set job timeout to 3 hours and 5 minutes (185 minutes)
+    timeout-minutes: 1440 # Set job timeout to 24 hours (1 day)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,9 +28,14 @@ jobs:
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
           # Define maximum runtime for the server within this workflow run (in seconds)
-          # Server will run for 3 hours before a final commit and termination.
-          MAX_RUNTIME_SECONDS=$((3 * 3600)) # 3 hours
-          
+          # Server will run for approximately 23 hours and 55 minutes before a final commit and termination.
+          MAX_RUNTIME_SECONDS=$((23 * 3600 + 55 * 60)) # 23 hours and 55 minutes
+
+          # Download playit-linux-amd64 agent
+          echo "Downloading playit-linux-amd64 agent..."
+          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
+          chmod +x playit-linux-amd64
+
           # Start playit agent in background
           echo "Starting playit agent..."
           ./playit-linux-amd64 --secret dba8668ae0b663e88ff9da28add6b73bee79dc86697bc897614a4906e4fd21d2 &
