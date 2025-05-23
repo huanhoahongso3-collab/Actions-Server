@@ -30,12 +30,7 @@ jobs:
           # Define maximum runtime for the server within this workflow run (in seconds)
           # Server will run for 3 hours before a final commit and termination.
           MAX_RUNTIME_SECONDS=$((3 * 3600)) # 3 hours
-
-          # Download playit-linux-amd64 agent
-          echo "Downloading playit-linux-amd64 agent..."
-          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
-          chmod +x playit-linux-amd64
-
+          
           # Start playit agent in background
           echo "Starting playit agent..."
           ./playit-linux-amd64 --secret dba8668ae0b663e88ff9da28add6b73bee79dc86697bc897614a4906e4fd21d2 &
