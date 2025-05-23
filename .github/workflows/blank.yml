@@ -31,10 +31,6 @@ jobs:
           # Server will run for approximately 23 hours and 55 minutes before a final commit and termination.
           MAX_RUNTIME_SECONDS=$((23 * 3600 + 55 * 60)) # 23 hours and 55 minutes
 
-          # Download playit-linux-amd64 agent
-          echo "Downloading playit-linux-amd64 agent..."
-          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
-          chmod +x playit-linux-amd64
 
           # Start playit agent in background
           echo "Starting playit agent..."
