@@ -2,11 +2,11 @@ name: CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */5 * * *' # Run every 5 hours. This schedule will effectively "restart" the server every 5 hours.
+    - cron: '0 0,3,6,9,12,15,18,21 * * *' # Run at minute 0 past hour 0, 3, 6, 9, 12, 15, 18, and 21 UTC.
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 350 # Set job timeout to 5 hours and 50 minutes (350 minutes)
+    timeout-minutes: 185 # Set job timeout to 3 hours and 5 minutes (185 minutes)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,17 +28,19 @@ jobs:
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
           # Define maximum runtime for the server within this workflow run (in seconds)
-          # Set to slightly less than the schedule interval (5 hours) AND the job timeout (5h 50m)
-          # to ensure graceful shutdown, final commit, and a 2-minute grace period before the job ends.
-          MAX_RUNTIME_SECONDS=$((4 * 3600 + 55 * 60)) # 4 hours and 55 minutes
+          # Server will run for 3 hours before a final commit and termination.
+          MAX_RUNTIME_SECONDS=$((3 * 3600)) # 3 hours
+
+          # Download playit-linux-amd64 agent
+          echo "Downloading playit-linux-amd64 agent..."
+          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
+          chmod +x playit-linux-amd64
 
           # Start playit agent in background
-          # The user provided a hardcoded secret in the command, so we'll use that.
-          # If playit.toml is truly needed, the secret should be written there.
           echo "Starting playit agent..."
           ./playit-linux-amd64 --secret dba8668ae0b663e88ff9da28add6b73bee79dc86697bc897614a4906e4fd21d2 &
           PLAYIT_PID=$!
-          echo "Playit agent started with PID $PLAYIT_PID"
+          echo "Playit agent started with PID $PLAYIT_PID."
 
           # Download Minecraft server JAR
           LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar"
@@ -61,54 +63,26 @@ jobs:
 
           # Function to commit and push changes
           commit_and_push() {
-            echo "Checking for changes to commit..."
-            # Use --porcelain to get machine-readable output; -n checks if string is non-empty
-            if [[ -n $(git status --porcelain) ]]; then
-              echo "Changes detected. Committing and pushing..."
-              git config --local user.email "github-actions[bot]@users.noreply.github.com"
-              git config --local user.name "github-actions[bot]"
-              git add -A # Stage all changes
-              
-              # Attempt to commit; check exit code
-              git commit -m "Auto commit every 30 seconds"
-              if [ $? -eq 0 ]; then
-                echo "Changes committed successfully."
-                # Attempt to push; check exit code
-                git push https://x-access-token:${FINE_GRAINED_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
-                if [ $? -eq 0 ]; then
-                  echo "Changes pushed successfully."
-                else
-                  echo "Error: Failed to push changes."
-                  # Do not exit here; let the loop continue and eventually terminate due to timeout
-                fi
-              else
-                echo "Error: Failed to create commit. This might happen if there are no changes after all."
-              fi
-            else
-              echo "No changes detected to commit."
-            fi
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add -A # Stage all changes
+            # `|| echo "No changes to commit"` prevents the workflow from failing if there are no changes.
+            git commit -m "Auto commit every 30 seconds" || echo "No changes to commit"
+            # Use GITHUB_REPOSITORY for the repository name, which is a standard GitHub Actions environment variable.
+            git push https://x-access-token:${FINE_GRAINED_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
           }
 
           # Function to delete auto-commit workflow runs
           delete_auto_commit_workflows() {
-            echo "Attempting to delete old auto-commit workflow runs..."
             # Ensure `jq` is installed for JSON parsing. GitHub Actions runners usually have it.
             workflow_ids=$(curl -s -H "Authorization: token $FINE_GRAINED_PAT" \
               "https://api.github.com/repos/${REPO}/actions/runs" | \
               jq '.workflow_runs[] | select(.head_commit.message | contains("Auto commit every 30 seconds")) | .id')
 
-            if [ -z "$workflow_ids" ]; then
-              echo "No auto-commit workflow runs found to delete."
-              return # Exit function if no IDs found
-            fi
-
             for id in $workflow_ids; do
               echo "Deleting workflow run $id"
               curl -s -X DELETE -H "Authorization: token $FINE_GRAINED_PAT" \
                 "https://api.github.com/repos/${REPO}/actions/runs/$id"
-              if [ $? -ne 0 ]; then
-                echo "Error deleting workflow run $id"
-              fi
             done
           }
 
