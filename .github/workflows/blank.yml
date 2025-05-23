@@ -32,11 +32,6 @@ jobs:
           # to ensure graceful shutdown, final commit, and a 2-minute grace period before the job ends.
           MAX_RUNTIME_SECONDS=$((4 * 3600 + 55 * 60)) # 4 hours and 55 minutes
 
-          # Download playit-linux-amd64 agent
-          echo "Downloading playit-linux-amd64 agent..."
-          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
-          chmod +x playit-linux-amd64
-
           # Start playit agent in background
           # The user provided a hardcoded secret in the command, so we'll use that.
           # If playit.toml is truly needed, the secret should be written there.
