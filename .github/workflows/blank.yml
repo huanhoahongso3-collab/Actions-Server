@@ -1,9 +1,12 @@
 name: CI
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *' # Run every 5 hours. This schedule will effectively "restart" the server every 5 hours.
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 350 # Set job timeout to 5 hours and 50 minutes (350 minutes)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,17 +27,26 @@ jobs:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
+          # Define maximum runtime for the server within this workflow run (in seconds)
+          # Set to slightly less than the schedule interval (5 hours) AND the job timeout (5h 50m)
+          # to ensure graceful shutdown, final commit, and a 2-minute grace period before the job ends.
+          MAX_RUNTIME_SECONDS=$((4 * 3600 + 55 * 60)) # 4 hours and 55 minutes
+
+          # Download playit-linux-amd64 agent
+          echo "Downloading playit-linux-amd64 agent..."
+          wget https://playit.gg/api/v1/agent/download?platform=linux-amd64 -O playit-linux-amd64
+          chmod +x playit-linux-amd64
+
           # Start playit agent in background
           # The user provided a hardcoded secret in the command, so we'll use that.
           # If playit.toml is truly needed, the secret should be written there.
-          chmod +x playit-linux-amd64
           echo "Starting playit agent..."
           ./playit-linux-amd64 --secret dba8668ae0b663e88ff9da28add6b73bee79dc86697bc897614a4906e4fd21d2 &
           PLAYIT_PID=$!
           echo "Playit agent started with PID $PLAYIT_PID"
 
           # Download Minecraft server JAR
-          LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar"
+          LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar"
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
@@ -44,7 +56,7 @@ jobs:
 
           # Start Minecraft server in background
           echo "Starting Minecraft server ($JAR)..."
-          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
+          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
           SPIGOT_PID=$!
           echo "Minecraft server started with PID $SPIGOT_PID"
 
@@ -72,7 +84,7 @@ jobs:
                   echo "Changes pushed successfully."
                 else
                   echo "Error: Failed to push changes."
-                  exit 1 # Exit with error if push fails
+                  # Do not exit here; let the loop continue and eventually terminate due to timeout
                 fi
               else
                 echo "Error: Failed to create commit. This might happen if there are no changes after all."
@@ -106,8 +118,18 @@ jobs:
           }
 
           # Loop to commit and delete workflows every 30 seconds
+          START_TIME=$(date +%s)
           while true; do
-            sleep 156
+            CURRENT_TIME=$(date +%s)
+            ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+
+            if [ "$ELAPSED_TIME" -ge "$MAX_RUNTIME_SECONDS" ]; then
+              echo "Maximum runtime of $MAX_RUNTIME_SECONDS seconds reached. Performing final commit and terminating server."
+              commit_and_push # Perform a final commit before exiting the loop
+              break
+            fi
+
+            sleep 30
             commit_and_push
             delete_auto_commit_workflows
             
@@ -122,3 +144,8 @@ jobs:
               break
             fi
           done
+
+          # Add a 2-minute grace period after server termination
+          echo "Server terminated. Waiting 2 minutes for the next action to be ready..."
+          sleep 120
+          echo "Grace period finished. Workflow job completing."
