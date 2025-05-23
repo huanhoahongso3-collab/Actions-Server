@@ -1,0 +1,23 @@
+# Sent when the automatic message delay is changed
+# {DELAY} - New delay value
+autoMessageDelayChange: "<green>Changed auto message delay to {DELAY}."
+# Sent when querying the current automatic message delay
+# {DELAY} - Current delay value
+autoMessageDelay: "<green>Current auto message delay is {DELAY}."
+# Sent when a command is used incorrectly
+# {USAGE} - Correct command usage
+invalidCommandUsage: "<red>Invalid usage<dark_gray>: <red>{USAGE}"
+# Header for multiple valid usages of a command
+usageHeader: "<red>Invalid usage<dark_gray>:"
+# Entry in the list of valid usages
+# {USAGE} - Correct command usage
+usageEntry: "<dark_gray>- <red>{USAGE}"
+# Sent when command sender lacks required permissions
+# {PERMISSIONS} - Required permission nodes
+missingPermissions: "<red>Missing permissions<dark_gray>: <red>{PERMISSIONS}"
+# Sent when the player could not be found
+playerNotFound: "<red>Player not found<dark_gray>."
+# Sent when successfully reloaded all plugin configuration files
+reload: "<green>The plugin configuration files has been reloaded. May note that not all functions are reloaded."
+# Sent when there is an error loading plugin configuration files
+reloadError: "<red>Failed to reload plugin configuration files. Please see the console."

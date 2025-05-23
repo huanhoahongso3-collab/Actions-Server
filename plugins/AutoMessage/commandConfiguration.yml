@@ -1,0 +1,31 @@
+#
+# This file allows you to configure commands.
+#
+# This allows you to globally edit commands.
+# For example, if you want to change the command name from /my-furnaces to /furnaces,
+# you can configure it like this:
+#
+# commands:
+#   <command_name>:
+#     name: "<new_command_name>"
+#     enabled: true/false
+#     aliases:
+#       - "<new_command_aliases>"
+#     permissions:
+#       - "<new_command_permission>"
+#     subCommands:
+#       <default_sub_command_name>:
+#         name: <new_sub_command_name>
+#         enabled: true/false
+#         aliases:
+#           - "<new_sub_command_aliases>"
+#         permissions:
+#           - "<new_sub_command_permission>"
+commands:
+  automessage:
+    name: automessage
+    enabled: true
+    aliases:
+    - am
+    permissions: []
+    subCommands: {}

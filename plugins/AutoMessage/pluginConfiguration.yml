@@ -1,0 +1,4 @@
+# Check for plugin update and send notification after administrator join to server?
+checkUpdate: true
+# How often should the plugin check for updates? Recommended value: 1 day
+updateInterval: 1d

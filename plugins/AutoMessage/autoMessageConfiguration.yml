@@ -1,0 +1,18 @@
+# How often should automatic messages be sent?
+delay: 10s
+# Defines the selection strategy for automatic messages.
+# RANDOM - messages are chosen randomly.
+# SEQUENTIAL - messages are sent in order.
+mode: SEQUENTIAL
+# List of automatic messages to be dispatched.
+# Supports different Notice types like chat, actionbar, title, boss bar.
+messages:
+- "<dark_gray>[<red>!<dark_gray>] <gray>This is first announcement of <rainbow>automessage <gray>plugin!"
+- actionbar: "<dark_gray>[<yellow>!<dark_gray>] <gray>This is second announcement of <rainbow>automessage <gray>plugin!"
+- title: <dark_gray>[<red>!<dark_gray>]
+  subtitle: "<rainbow>This is third announcement!"
+- bossbar:
+    message: "<dark_gray>[<red><bold>!<dark_gray>] <rainbow>This is fourth announcement!"
+    duration: 5s
+    color: RED
+    overlay: PROGRESS
