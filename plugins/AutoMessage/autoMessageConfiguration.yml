@@ -8,4 +8,4 @@ mode: SEQUENTIAL
 # Supports different Notice types like chat, actionbar, title, boss bar.
 messages:
 - title: <dark_gray>[<red>!<dark_gray>]
-  subtitle: "<rainbow>This is third announcement!"
+  subtitle: "<rainbow>Server is going to restart soon! Warning! Data can be lost!"
