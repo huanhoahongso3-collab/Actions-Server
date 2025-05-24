@@ -27,10 +27,9 @@ jobs:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
-          # Define maximum runtime for the server within this workflow run (in seconds)
-          # Server will run for approximately 23 hours and 55 minutes before a final commit and termination.
-          MAX_RUNTIME_SECONDS=$((23 * 3600 + 55 * 60)) # 23 hours and 55 minutes
-
+          # Define the target stop time in UTC (00:00)
+          STOP_HOUR_UTC=0
+          STOP_MINUTE_UTC=0
 
           # Start playit agent in background
           echo "Starting playit agent..."
@@ -39,7 +38,7 @@ jobs:
           echo "Playit agent started with PID $PLAYIT_PID."
 
           # Download Minecraft server JAR
-          LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar"
+          LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar"
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
@@ -49,7 +48,7 @@ jobs:
 
           # Start Minecraft server in background
           echo "Starting Minecraft server ($JAR)..."
-          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
+          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDAacted>/' &
           SPIGOT_PID=$!
           echo "Minecraft server started with PID $SPIGOT_PID"
 
@@ -83,23 +82,26 @@ jobs:
           }
 
           # Loop to commit and delete workflows every 30 seconds
-          START_TIME=$(date +%s)
           while true; do
-            CURRENT_TIME=$(date +%s)
-            ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+            CURRENT_HOUR_UTC=$(date -u +%H)
+            CURRENT_MINUTE_UTC=$(date -u +%M)
 
-            if [ "$ELAPSED_TIME" -ge "$MAX_RUNTIME_SECONDS" ]; then
-              echo "Maximum runtime of $MAX_RUNTIME_SECONDS seconds reached. Performing final commit and terminating server."
+            # Check if current UTC time is past the stop time (00:00 UTC)
+            # We explicitly check for 00:00 to ensure it stops at the exact transition
+            if [[ "$CURRENT_HOUR_UTC" -eq "$STOP_HOUR_UTC" ]] && [[ "$CURRENT_MINUTE_UTC" -eq "$STOP_MINUTE_UTC" ]]; then
+              echo "Reached 00:00 UTC. Performing final commit and terminating server."
               commit_and_push # Perform a final commit before exiting the loop
+              kill $SPIGOT_PID 2>/dev/null # Attempt to kill Spigot server
+              kill $PLAYIT_PID 2>/dev/null # Attempt to kill Playit agent
+              echo "Processes killed. Workflow job completing."
               break
             fi
 
             sleep 30
             commit_and_push
             delete_auto_commit_workflows
-            
-            # Check if processes are still running
-            # `kill -0 $SPIGOT_PID` sends signal 0, which checks if the process exists without killing it.
+
+            # Check if processes are still running (in case they crashed or were stopped manually)
             if ! kill -0 $SPIGOT_PID 2>/dev/null; then
               echo "Spigot process has finished. Terminating the workflow."
               break
@@ -110,7 +112,4 @@ jobs:
             fi
           done
 
-          # Add a 2-minute grace period after server termination
-          echo "Server terminated. Waiting 2 minutes for the next action to be ready..."
-          sleep 120
-          echo "Grace period finished. Workflow job completing."
+          echo "Workflow job completed."
