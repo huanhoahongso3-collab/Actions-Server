@@ -84,3 +84,27 @@ java.lang.NoSuchMethodError: 'org.bukkit.ServerTickManager org.bukkit.Bukkit.get
 [00:52:42] [Server thread/INFO]: Done (17.239s)! For help, type "help"
 [00:52:42] [Server thread/INFO]: Timings Reset
 [00:52:42] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[04:36:52] [User Authenticator #0/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
+[04:36:52] [Server thread/ERROR]: Could not pass event PlayerJoinEvent to FreezeHibernate v1.0
+java.lang.NoSuchMethodError: 'org.bukkit.ServerTickManager org.bukkit.Bukkit.getServerTickManager()'
+	at de.malfrador.freezehibernate.FreezeHibernate.onJoin(FreezeHibernate.java:28) ~[FreezeHibernate-1.0.jar:?]
+	at com.destroystokyo.paper.event.executor.MethodHandleEventExecutor.execute(MethodHandleEventExecutor.java:40) ~[paper-api-1.20.1-R0.1-SNAPSHOT.jar:?]
+	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:81) ~[paper-api-1.20.1-R0.1-SNAPSHOT.jar:git-Paper-196]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:70) ~[paper-api-1.20.1-R0.1-SNAPSHOT.jar:?]
+	at io.papermc.paper.plugin.manager.PaperEventManager.callEvent(PaperEventManager.java:54) ~[paper-1.20.1.jar:git-Paper-196]
+	at io.papermc.paper.plugin.manager.PaperPluginManagerImpl.callEvent(PaperPluginManagerImpl.java:126) ~[paper-1.20.1.jar:git-Paper-196]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:615) ~[paper-api-1.20.1-R0.1-SNAPSHOT.jar:?]
+	at net.minecraft.server.players.PlayerList.placeNewPlayer(PlayerList.java:339) ~[paper-1.20.1.jar:git-Paper-196]
+	at net.minecraft.server.network.ServerLoginPacketListenerImpl.placeNewPlayer(ServerLoginPacketListenerImpl.java:202) ~[?:?]
+	at net.minecraft.server.network.ServerLoginPacketListenerImpl.handleAcceptedLogin(ServerLoginPacketListenerImpl.java:183) ~[?:?]
+	at net.minecraft.server.network.ServerLoginPacketListenerImpl.tick(ServerLoginPacketListenerImpl.java:85) ~[?:?]
+	at net.minecraft.network.Connection.tick(Connection.java:602) ~[?:?]
+	at net.minecraft.server.network.ServerConnectionListener.tick(ServerConnectionListener.java:234) ~[?:?]
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1586) ~[paper-1.20.1.jar:git-Paper-196]
+	at net.minecraft.server.dedicated.DedicatedServer.tickChildren(DedicatedServer.java:446) ~[paper-1.20.1.jar:git-Paper-196]
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1393) ~[paper-1.20.1.jar:git-Paper-196]
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1170) ~[paper-1.20.1.jar:git-Paper-196]
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:317) ~[paper-1.20.1.jar:git-Paper-196]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[04:36:52] [Server thread/INFO]: masterlegendmc joined the game
+[04:36:53] [Server thread/INFO]: masterlegendmc[/127.85.58.125:45057] logged in with entity id 276 at ([world]76.5, 64.0, 489.5)
