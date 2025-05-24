@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 1440 # Set job timeout to 24 hours (1 day)
+    timeout-minutes: 1442 # Set job timeout to 24 hours (1 day) and 2 minutes
     steps:
       - uses: actions/checkout@v4
         with:
