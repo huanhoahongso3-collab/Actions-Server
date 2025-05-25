@@ -53,7 +53,7 @@ anticheat:
       hide-itemmeta: false
       hide-itemmeta-with-visual-effects: false
 chunks:
-  auto-save-interval: default
+  auto-save-interval: 600
   delay-chunk-unloads-by: 10s
   entity-per-chunk-save-limit:
     arrow: -1
