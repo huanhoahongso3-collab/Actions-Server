@@ -83,11 +83,15 @@ jobs:
           # Function to commit and push changes
           commit_and_push() {
             echo "Attempting Git commit and push..."
-            # Reset to HEAD to clean any potential leftover issues from previous failed commits
-            # This is safe in an ephemeral GitHub Actions runner.
-            git reset --hard HEAD || { echo "Failed to hard reset. Skipping commit."; return 1; }
 
-            # Run garbage collection to clean up the repository
+            # 1. Fetch the latest changes from the remote
+            git fetch origin main || { echo "Failed to fetch from remote. Skipping commit."; return 1; }
+
+            # 2. Reset the local branch to exactly match the remote branch's head
+            # This ensures a clean slate and avoids "confused by unstable object" errors and "rejected" pushes.
+            git reset --hard origin/main || { echo "Failed to hard reset to origin/main. Skipping commit."; return 1; }
+            
+            # 3. Run garbage collection to clean up the repository
             git gc --prune=now || { echo "Failed to run git gc. Skipping commit."; return 1; }
 
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
