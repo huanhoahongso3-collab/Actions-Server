@@ -79,3 +79,7 @@
 [13:59:15] [Server thread/INFO]: Done (6.353s)! For help, type "help"
 [13:59:15] [Server thread/INFO]: Timings Reset
 [13:59:15] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[14:01:14] [User Authenticator #0/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
+[14:01:14] [Server thread/INFO]: [FreezeHibernate] A player joined. Server is now unfrozen.
+[14:01:14] [Server thread/INFO]: masterlegendmc joined the game
+[14:01:14] [Server thread/INFO]: masterlegendmc[/127.85.58.125:58241] logged in with entity id 170 at ([world]20.646121733793745, 63.0, 567.6001085169207)
