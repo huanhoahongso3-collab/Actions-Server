@@ -82,15 +82,29 @@ jobs:
 
           # Function to commit and push changes
           commit_and_push() {
+            echo "Attempting Git commit and push..."
+            # Reset to HEAD to clean any potential leftover issues from previous failed commits
+            # This is safe in an ephemeral GitHub Actions runner.
+            git reset --hard HEAD || { echo "Failed to hard reset. Skipping commit."; return 1; }
+
+            # Run garbage collection to clean up the repository
+            git gc --prune=now || { echo "Failed to run git gc. Skipping commit."; return 1; }
+
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
             git config --local user.name "github-actions[bot]"
+            
             git add -A # Stage all changes
-            # `|| echo "No changes to commit"` prevents the workflow from failing if there are no changes.
-            git commit -m "Auto commit every 30 seconds" || echo "No changes to commit"
-            # Use GITHUB_REPOSITORY for the repository name, which is a standard GitHub Actions environment variable.
-            git push https://x-access-token:${FINE_GRAINED_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
+            
+            # Check if there are any changes to commit before attempting to commit
+            if ! git diff-index --quiet HEAD; then
+              git commit -m "Auto commit every 30 seconds" || { echo "Failed to commit changes. Skipping push."; return 1; }
+              # Use GITHUB_REPOSITORY for the repository name, which is a standard GitHub Actions environment variable.
+              git push https://x-access-token:${FINE_GRAINED_PAT}@github.com/${GITHUB_REPOSITORY}.git HEAD:main || { echo "Failed to push changes."; return 1; }
+              echo "Changes committed and pushed successfully."
+            else
+              echo "No changes detected to commit."
+            fi
           }
-
           # Function to delete auto-commit workflow runs
           delete_auto_commit_workflows() {
             # Ensure `jq` is installed for JSON parsing. GitHub Actions runners usually have it.
