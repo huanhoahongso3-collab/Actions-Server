@@ -66,3 +66,4 @@
 [00:59:47] [Server thread/INFO]: Done (6.082s)! For help, type "help"
 [00:59:47] [Server thread/INFO]: Timings Reset
 [00:59:47] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[01:04:51] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2540ms or 50 ticks behind
