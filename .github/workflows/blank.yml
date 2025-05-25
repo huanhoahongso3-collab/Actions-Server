@@ -1,12 +1,12 @@
-name: CI
+name: Minecraft
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # Run at minute 0 past hour 0 UTC every day.
+    - cron: '0 0,6,12,18 * * *' # Run at minute 0 past hour 0, 6, 12, and 18 UTC every day.
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 1442 # Set job timeout to 24 hours (1 day) and 2 minutes
+    # Removed timeout-minutes as the job will now terminate based on the explicit stop time.
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,7 +19,7 @@ jobs:
           distribution: 'adopt'
       - name: Debug - List directory contents
         run: ls -la
-      - name: Run Spigot with 30-second commits and workflow deletion
+      - name: Run Spigot with 30-second commits and scheduled stop
         # This condition ensures the step doesn't run if the commit message already contains "Auto commit every 30 seconds"
         # to prevent an infinite loop of workflow triggers from self-commits.
         if: "!contains(github.event.head_commit.message, 'Auto commit every 30 seconds')"
@@ -27,9 +27,33 @@ jobs:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
-          # Define the target stop time in UTC (00:00)
-          STOP_HOUR_UTC=0
-          STOP_MINUTE_UTC=0
+          # Define the fixed schedule hours
+          SCHEDULE_HOURS=(0 6 12 18)
+
+          # Get current UTC hour and minute
+          CURRENT_HOUR_UTC=$(date -u +%H)
+          CURRENT_MINUTE_UTC=$(date -u +%M)
+
+          # Calculate the next scheduled stop hour (HH:00 UTC).
+          # The job should run until the next upcoming scheduled hour.
+          NEXT_STOP_HOUR_UTC=-1
+          for hour in "${SCHEDULE_HOURS[@]}"; do
+            if [[ "$hour" -gt "$CURRENT_HOUR_UTC" ]]; then
+              NEXT_STOP_HOUR_UTC=$hour
+              break
+            fi
+          done
+
+          # If no next scheduled hour is found in the current day (e.g., started at 18:xx, next is 00:xx next day)
+          if [[ "$NEXT_STOP_HOUR_UTC" -eq -1 ]]; then
+            NEXT_STOP_HOUR_UTC=${SCHEDULE_HOURS[0]} # Wrap around to 00 UTC of the next day
+          fi
+          
+          STOP_HOUR_UTC=$NEXT_STOP_HOUR_UTC
+          STOP_MINUTE_UTC=0 # Always stop at minute 00 of the target hour
+
+          echo "Current UTC: $CURRENT_HOUR_UTC:$CURRENT_MINUTE_UTC"
+          echo "Calculated Stop Time UTC: $STOP_HOUR_UTC:$STOP_MINUTE_UTC"
 
           # Start playit agent in background
           echo "Starting playit agent..."
@@ -48,7 +72,7 @@ jobs:
 
           # Start Minecraft server in background
           echo "Starting Minecraft server ($JAR)..."
-          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDAacted>/' &
+          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
           SPIGOT_PID=$!
           echo "Minecraft server started with PID $SPIGOT_PID"
 
@@ -81,33 +105,38 @@ jobs:
             done
           }
 
-          # Loop to commit and delete workflows every 30 seconds
+          # Loop to commit every 30 seconds and check for stop time
           while true; do
             CURRENT_HOUR_UTC=$(date -u +%H)
             CURRENT_MINUTE_UTC=$(date -u +%M)
 
-            # Check if current UTC time is past the stop time (00:00 UTC)
-            # We explicitly check for 00:00 to ensure it stops at the exact transition
-            if [[ "$CURRENT_HOUR_UTC" -eq "$STOP_HOUR_UTC" ]] && [[ "$CURRENT_MINUTE_UTC" -eq "$STOP_MINUTE_UTC" ]]; then
-              echo "Reached 00:00 UTC. Performing final commit and terminating server."
-              commit_and_push # Perform a final commit before exiting the loop
-              kill $SPIGOT_PID 2>/dev/null # Attempt to kill Spigot server
-              kill $PLAYIT_PID 2>/dev/null # Attempt to kill Playit agent
-              echo "Processes killed. Workflow job completing."
-              break
+            # Check if current UTC time has reached or passed the calculated stop time
+            if [[ "$CURRENT_HOUR_UTC" -eq "$STOP_HOUR_UTC" ]] && [[ "$CURRENT_MINUTE_UTC" -ge "$STOP_MINUTE_UTC" ]]; then
+                echo "Reached scheduled stop time ($STOP_HOUR_UTC:00 UTC). Performing final commit and terminating processes."
+                commit_and_push # Perform a final commit
+
+                echo "Terminating Spigot process (PID $SPIGOT_PID)..."
+                kill $SPIGOT_PID 2>/dev/null || echo "Spigot process already gone." # Kill Spigot
+                
+                echo "Terminating Playit agent process (PID $PLAYIT_PID)..."
+                kill $PLAYIT_PID 2>/dev/null || echo "Playit process already gone." # Kill Playit
+
+                echo "Processes terminated. Workflow job completing."
+                break # Exit the loop, ending the job.
             fi
 
             sleep 30
             commit_and_push
             delete_auto_commit_workflows
-
-            # Check if processes are still running (in case they crashed or were stopped manually)
+            
+            # These checks are primarily for logging if the server or playit agent crashes unexpectedly
+            # before the scheduled stop time.
             if ! kill -0 $SPIGOT_PID 2>/dev/null; then
-              echo "Spigot process has finished. Terminating the workflow."
+              echo "Spigot process has finished unexpectedly. Terminating the workflow."
               break
             fi
             if ! kill -0 $PLAYIT_PID 2>/dev/null; then
-              echo "Playit process has finished. Terminating the workflow."
+              echo "Playit process has finished unexpectedly. Terminating the workflow."
               break
             fi
           done
