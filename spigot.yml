@@ -45,6 +45,7 @@ settings:
   debug: false
 world-settings:
   default:
+    seed-trialchambers: 94251327
     verbose: false
     below-zero-generation-in-existing-chunks: true
     view-distance: default
