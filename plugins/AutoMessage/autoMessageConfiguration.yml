@@ -1,5 +1,5 @@
 # How often should automatic messages be sent?
-delay: 4m16s
+delay: 3m
 # Defines the selection strategy for automatic messages.
 # RANDOM - messages are chosen randomly.
 # SEQUENTIAL - messages are sent in order.
@@ -7,10 +7,10 @@ mode: RANDOM
 # List of automatic messages to be dispatched.
 # Supports different Notice types like chat, actionbar, title, boss bar.
 messages:
-- "<dark_gray>[<red>!<dark_gray>] <rainbow>Server sẽ khởi động lại vào (Server will restart on): <pink>0,7,13,18 UTC+7"
-- actionbar: "<dark_gray>[<yellow>!<dark_gray>] <rainbow>Server sẽ khởi động lại vào (Server will restart on): <pink>0,7,13,18 UTC+7"
+- "<dark_gray>[<red>!<dark_gray>] <rainbow>Server sẽ khởi động lại vào (Server will restart on): 0,7,13,18 UTC+7"
+- actionbar: "<dark_gray>[<yellow>!<dark_gray>] <rainbow>Server sẽ khởi động lại vào (Server will restart on): 0,7,13,18 UTC+7"
 - bossbar:
-    message: "<dark_gray>[<red><bold>!<dark_gray>] <rainbow>Server sẽ khởi động lại vào (Server will restart on): <pink>0,7,13,18 UTC+7"
+    message: "<dark_gray>[<red><bold>!<dark_gray>] <rainbow>Server sẽ khởi động lại vào (Server will restart on): 0,7,13,18 UTC+7"
     duration: 15s
     color: PINK
     overlay: PROGRESS
