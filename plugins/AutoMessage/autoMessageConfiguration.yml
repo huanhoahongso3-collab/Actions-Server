@@ -1,5 +1,5 @@
 # How often should automatic messages be sent?
-delay: 256s
+delay: 4m16s
 # Defines the selection strategy for automatic messages.
 # RANDOM - messages are chosen randomly.
 # SEQUENTIAL - messages are sent in order.
