@@ -73,3 +73,7 @@
 [14:19:51] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
 [14:19:51] [Server thread/INFO]: [FreezeHibernate] Last player disconnected. Server is now frozen.
 [14:19:51] [Server thread/INFO]: masterlegendmc left the game
+[14:20:14] [User Authenticator #1/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
+[14:20:14] [Server thread/INFO]: [FreezeHibernate] A player joined. Server is now unfrozen.
+[14:20:14] [Server thread/INFO]: masterlegendmc joined the game
+[14:20:14] [Server thread/INFO]: masterlegendmc[/127.85.58.125:37677] logged in with entity id 316 at ([world]77.5, 64.0, 497.5)
