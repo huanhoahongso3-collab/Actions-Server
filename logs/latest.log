@@ -1,79 +1,68 @@
-[14:17:15] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[14:17:17] [ServerMain/INFO]: Loaded 1174 recipes
-[14:17:17] [ServerMain/INFO]: Loaded 1271 advancements
-[14:17:17] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[14:17:17] [Server thread/INFO]: Loading properties
-[14:17:17] [Server thread/INFO]: This server is running Paper version git-Paper-499 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 9de3f75 on ver/1.20.4)
-[14:17:18] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[14:17:18] [Server thread/INFO]: Using 4 threads for Netty based IO
-[14:17:18] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
+[14:23:48] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[14:23:50] [ServerMain/INFO]: Loaded 1174 recipes
+[14:23:50] [ServerMain/INFO]: Loaded 1271 advancements
+[14:23:50] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[14:23:50] [Server thread/INFO]: Loading properties
+[14:23:50] [Server thread/INFO]: This server is running Paper version git-Paper-499 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 9de3f75 on ver/1.20.4)
+[14:23:51] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:23:51] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:23:52] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
     We recommend installing the spark profiler as a replacement: https://spark.lucko.me/
     For more information please visit: https://github.com/PaperMC/Paper/issues/8948
-[14:17:18] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
-[14:17:18] [Server thread/INFO]: Default game type: SURVIVAL
-[14:17:18] [Server thread/INFO]: Generating keypair
-[14:17:19] [Server thread/INFO]: Starting Minecraft server on *:25565
-[14:17:19] [Server thread/INFO]: Using default channel type
-[14:17:19] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[14:17:19] [Server thread/INFO]: Paper: Using OpenSSL 3.0.x (Linux x86_64) cipher from Velocity.
-[14:17:19] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.2
-[14:17:19] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.2 is now loaded. Registering protocol transformers and injecting...
-[14:17:20] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
-[14:17:20] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
-[14:17:20] [Server thread/INFO]: [ViaBackwards] Loading translations...
-[14:17:20] [Server thread/INFO]: [ViaBackwards] Registering protocols...
-[14:17:20] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.2
-[14:17:20] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.3
-[14:17:20] [Server thread/INFO]: [AutoMessage] Loading server plugin AutoMessage v1.0.2
-[14:17:20] [Server thread/INFO]: [FreezeHibernate] Loading server plugin FreezeHibernate v1.0
-[14:17:20] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[14:17:20] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.3
-[14:17:21] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
-[14:17:22] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[14:17:22] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[14:17:22] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[14:17:22] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[14:17:22] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[14:17:22] [Server thread/INFO]: Preparing level "world"
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.3
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 7eb6dc6
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[14:17:22] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[14:17:22] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[14:17:22] [Server thread/INFO]: Time elapsed: 189 ms
-[14:17:22] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[14:17:22] [Server thread/INFO]: Time elapsed: 120 ms
-[14:17:22] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[14:17:22] [Server thread/INFO]: Time elapsed: 53 ms
-[14:17:22] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.2
-[14:17:22] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.20.3-1.20.4 (765)
-[14:17:22] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.2
-[14:17:22] [Server thread/INFO]: [AutoMessage] Enabling AutoMessage v1.0.2
-[14:17:23] [Server thread/INFO]: [AutoMessage] Edited command automessage via configuration.
-[14:17:23] [Server thread/INFO]: [AutoMessage] Enabled plugin in 842ms.
-[14:17:23] [Server thread/INFO]: [FreezeHibernate] Enabling FreezeHibernate v1.0
-[14:17:23] [Server thread/INFO]: [FreezeHibernate] Server is frozen until a player joins.
-[14:17:23] [Server thread/INFO]: Running delayed init tasks
-[14:17:23] [Server thread/INFO]: Done (6.412s)! For help, type "help"
-[14:17:23] [Server thread/INFO]: Timings Reset
-[14:17:23] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
-[14:18:19] [User Authenticator #0/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
-[14:18:19] [Server thread/INFO]: [FreezeHibernate] A player joined. Server is now unfrozen.
-[14:18:19] [Server thread/INFO]: masterlegendmc joined the game
-[14:18:19] [Server thread/INFO]: masterlegendmc[/127.85.58.125:55471] logged in with entity id 20 at ([world]29.090342129995737, 60.0, 564.5063258556629)
-[14:19:51] [Server thread/INFO]: masterlegendmc lost connection: Disconnected
-[14:19:51] [Server thread/INFO]: [FreezeHibernate] Last player disconnected. Server is now frozen.
-[14:19:51] [Server thread/INFO]: masterlegendmc left the game
-[14:20:14] [User Authenticator #1/INFO]: UUID of player masterlegendmc is d7e28302-83f7-3fa3-ae6a-f84124b40b5a
-[14:20:14] [Server thread/INFO]: [FreezeHibernate] A player joined. Server is now unfrozen.
-[14:20:14] [Server thread/INFO]: masterlegendmc joined the game
-[14:20:14] [Server thread/INFO]: masterlegendmc[/127.85.58.125:37677] logged in with entity id 316 at ([world]77.5, 64.0, 497.5)
+[14:23:52] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
+[14:23:52] [Server thread/INFO]: Default game type: SURVIVAL
+[14:23:52] [Server thread/INFO]: Generating keypair
+[14:23:52] [Server thread/INFO]: Starting Minecraft server on *:25565
+[14:23:52] [Server thread/INFO]: Using default channel type
+[14:23:52] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[14:23:52] [Server thread/INFO]: Paper: Using OpenSSL 3.0.x (Linux x86_64) cipher from Velocity.
+[14:23:52] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.2
+[14:23:52] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.2 is now loaded. Registering protocol transformers and injecting...
+[14:23:53] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
+[14:23:53] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
+[14:23:53] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[14:23:53] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[14:23:54] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.2
+[14:23:54] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.3
+[14:23:54] [Server thread/INFO]: [AutoMessage] Loading server plugin AutoMessage v1.0.2
+[14:23:54] [Server thread/INFO]: [FreezeHibernate] Loading server plugin FreezeHibernate v1.0
+[14:23:54] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:23:54] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.3
+[14:23:54] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[14:23:55] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[14:23:55] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14:23:55] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[14:23:55] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14:23:55] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[14:23:55] [Server thread/INFO]: Preparing level "world"
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.3
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 7eb6dc6
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[14:23:55] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[14:23:55] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[14:23:55] [Server thread/INFO]: Time elapsed: 256 ms
+[14:23:55] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[14:23:55] [Server thread/INFO]: Time elapsed: 74 ms
+[14:23:55] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[14:23:56] [Server thread/INFO]: Time elapsed: 55 ms
+[14:23:56] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.2
+[14:23:56] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.20.3-1.20.4 (765)
+[14:23:56] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.2
+[14:23:56] [Server thread/INFO]: [AutoMessage] Enabling AutoMessage v1.0.2
+[14:23:56] [Server thread/INFO]: [AutoMessage] Edited command automessage via configuration.
+[14:23:56] [Server thread/INFO]: [AutoMessage] Enabled plugin in 814ms.
+[14:23:56] [Server thread/INFO]: [FreezeHibernate] Enabling FreezeHibernate v1.0
+[14:23:57] [Server thread/INFO]: [FreezeHibernate] Server is frozen until a player joins.
+[14:23:57] [Server thread/INFO]: Running delayed init tasks
+[14:23:57] [Server thread/INFO]: Done (6.280s)! For help, type "help"
+[14:23:57] [Server thread/INFO]: Timings Reset
+[14:23:57] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
