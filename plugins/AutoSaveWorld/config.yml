@@ -2,7 +2,7 @@ var:
   debug: false
   commandsonlyfromconsole: false
 save:
-  interval: 900
+  interval: 600
   broadcast: true
   disablestructuresaving: false
   forceregioncachedump: true
