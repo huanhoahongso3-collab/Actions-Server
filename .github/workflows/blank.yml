@@ -27,7 +27,7 @@ jobs:
           FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
           REPO: ${{ github.repository }} # GITHUB_REPOSITORY is also available automatically
         run: |
-# Define the fixed schedule hours
+          # Define the fixed schedule hours
           SCHEDULE_HOURS=(0 6 12 18)
 
           # Get current UTC hour and minute
