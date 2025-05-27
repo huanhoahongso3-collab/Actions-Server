@@ -29,11 +29,9 @@ jobs:
         run: |
           # Define the fixed schedule hours
           SCHEDULE_HOURS=(0 6 12 18)
-
           # Get current UTC hour and minute
           CURRENT_HOUR_UTC=$(date -u +%H)
           CURRENT_MINUTE_UTC=$(date -u +%M)
-
           # Calculate the next scheduled stop hour (HH:00 UTC).
           # The job should run until the next upcoming scheduled hour.
           NEXT_STOP_HOUR_UTC=-1
@@ -43,7 +41,6 @@ jobs:
               break
             fi
           done
-
           # If no next scheduled hour is found in the current day (e.g., started at 18:xx, next is 00:xx next day)
           if [[ "$NEXT_STOP_HOUR_UTC" -eq -1 ]]; then
             NEXT_STOP_HOUR_UTC=${SCHEDULE_HOURS[0]} # Wrap around to 00 UTC of the next day
@@ -51,52 +48,40 @@ jobs:
           
           STOP_HOUR_UTC=$NEXT_STOP_HOUR_UTC
           STOP_MINUTE_UTC=0 # Always stop at minute 00 of the target hour
-
           echo "Current UTC: $CURRENT_HOUR_UTC:$CURRENT_MINUTE_UTC"
           echo "Calculated Stop Time UTC: $STOP_HOUR_UTC:$STOP_MINUTE_UTC"
-
           # Start playit agent in background
           echo "Starting playit agent..."
+          # Redirect stdout and stderr to /dev/null to suppress its output
           ./playit-linux-amd64 --secret dba8668ae0b663e88ff9da28add6b73bee79dc86697bc897614a4906e4fd21d2 > /dev/null 2>&1 &
           PLAYIT_PID=$!
           echo "Playit agent started with PID $PLAYIT_PID."
-
           # Download Minecraft server JAR
-          LINK="https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar"
+          LINK="https://api.papermc.io/v2/projects/paper/versions/1.21.1/builds/133/downloads/paper-1.21.1-133.jar"
           JAR="${LINK##*/}"
           echo "Downloading $JAR from $LINK..."
           wget "$LINK" -O "$JAR"
-
           # Accept EULA (End User License Agreement) for Minecraft server
           echo "eula=true" > eula.txt
-
-          # Start Minecraft server in a screen session for graceful shutdown
-          SERVER_SCREEN_NAME="mcserver"
-          echo "Starting Minecraft server ($JAR) in screen session '$SERVER_SCREEN_NAME'..."
-          # The `screen -dmS` command starts a detached screen session.
-          # `stuff` sends the command to the screen session, followed by a newline.
-          screen -dmS "$SERVER_SCREEN_NAME" java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui
-          
-          # We don't get the PID directly from `java` anymore, but can check screen status.
-          # For monitoring, we can check if the screen session exists.
-
-          echo "Minecraft server started in screen session."
-
+          # Start Minecraft server in background
+          echo "Starting Minecraft server ($JAR)..."
+          java -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Xms16G -Xmx16G -jar "$JAR" nogui 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
+          SPIGOT_PID=$!
+          echo "Minecraft server started with PID $SPIGOT_PID"
           # Give the server some time to start and generate initial files
           echo "Waiting 60 seconds for server to initialize and generate files..."
           sleep 60
-
           # Function to commit and push changes
           commit_and_push() {
             echo "Attempting Git commit and push..."
-            # Reset to HEAD to clean any potential leftover issues from previous failed commits
-            # This is safe in an ephemeral GitHub Actions runner.
+            # 1. Fetch the latest changes from the remote
             git fetch origin main || { echo "Failed to fetch from remote. Skipping commit."; return 1; }
+            # 2. Reset the local branch to exactly match the remote branch's head
+            # This ensures a clean slate and avoids "confused by unstable object" errors and "rejected" pushes.
             git reset --hard origin/main || { echo "Failed to hard reset to origin/main. Skipping commit."; return 1; }
             
-            # Run garbage collection to clean up the repository
+            # 3. Run garbage collection to clean up the repository
             git gc --prune=now || { echo "Failed to run git gc. Skipping commit."; return 1; }
-
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
             git config --local user.name "github-actions[bot]"
             
@@ -112,65 +97,42 @@ jobs:
               echo "No changes detected to commit."
             fi
           }
-
           # Function to delete auto-commit workflow runs
           delete_auto_commit_workflows() {
-            echo "Attempting to delete old auto-commit workflow runs..."
+            # Ensure `jq` is installed for JSON parsing. GitHub Actions runners usually have it.
             workflow_ids=$(curl -s -H "Authorization: token $FINE_GRAINED_PAT" \
               "https://api.github.com/repos/${REPO}/actions/runs" | \
-              jq -r '.workflow_runs[] | select(.head_commit.message | contains("Auto commit every 30 seconds")) | .id')
-
-            if [ -z "$workflow_ids" ]; then
-              echo "No auto-commit workflow runs found to delete."
-              return 0
-            fi
-
+              jq '.workflow_runs[] | select(.head_commit.message | contains("Auto commit every 30 seconds")) | .id')
             for id in $workflow_ids; do
               echo "Deleting workflow run $id"
               curl -s -X DELETE -H "Authorization: token $FINE_GRAINED_PAT" \
                 "https://api.github.com/repos/${REPO}/actions/runs/$id"
             done
-            echo "Finished deleting auto-commit workflow runs."
           }
-
           # Loop to commit every 30 seconds and check for stop time
           while true; do
             CURRENT_HOUR_UTC=$(date -u +%H)
             CURRENT_MINUTE_UTC=$(date -u +%M)
-
             # Check if current UTC time has reached or passed the calculated stop time
             if [[ "$CURRENT_HOUR_UTC" -eq "$STOP_HOUR_UTC" ]] && [[ "$CURRENT_MINUTE_UTC" -ge "$STOP_MINUTE_UTC" ]]; then
-                echo "Reached scheduled stop time ($STOP_HOUR_UTC:00 UTC). Performing final commit and initiating graceful server shutdown."
+                echo "Reached scheduled stop time ($STOP_HOUR_UTC:00 UTC). Performing final commit and terminating processes."
                 commit_and_push # Perform a final commit
-
-                echo "Sending 'stop' command to Minecraft server..."
-                # Send 'stop' command to the screen session, followed by a newline
-                screen -S "$SERVER_SCREEN_NAME" -X stuff "stop\n"
+                echo "Terminating Spigot process (PID $SPIGOT_PID)..."
+                kill $SPIGOT_PID 2>/dev/null || echo "Spigot process already gone." # Kill Spigot
                 
-                # Give server time to save and shut down gracefully (e.g., 30-60 seconds)
-                echo "Waiting 60 seconds for server to shut down gracefully..."
-                sleep 60 
-
-                # After attempting graceful shutdown, ensure Playit agent is killed
                 echo "Terminating Playit agent process (PID $PLAYIT_PID)..."
-                kill $PLAYIT_PID 2>/dev/null || echo "Playit process already gone or could not be killed." # Kill Playit
-
-                # Also ensure the screen session is terminated, in case the server hung
-                echo "Terminating screen session '$SERVER_SCREEN_NAME' if still active..."
-                screen -S "$SERVER_SCREEN_NAME" -X quit 2>/dev/null || echo "Screen session already terminated."
-
-
-                echo "Processes handled. Workflow job completing."
+                kill $PLAYIT_PID 2>/dev/null || echo "Playit process already gone." # Kill Playit
+                echo "Processes terminated. Workflow job completing."
                 break # Exit the loop, ending the job.
             fi
-
             sleep 30
             commit_and_push
             delete_auto_commit_workflows
             
-            # Check if the screen session is still running (proxy for server status)
-            if ! screen -list | grep -q "$SERVER_SCREEN_NAME"; then
-              echo "Minecraft server screen session has finished unexpectedly. Terminating the workflow."
+            # These checks are primarily for logging if the server or playit agent crashes unexpectedly
+            # before the scheduled stop time.
+            if ! kill -0 $SPIGOT_PID 2>/dev/null; then
+              echo "Spigot process has finished unexpectedly. Terminating the workflow."
               break
             fi
             if ! kill -0 $PLAYIT_PID 2>/dev/null; then
@@ -178,5 +140,4 @@ jobs:
               break
             fi
           done
-
           echo "Workflow job completed."
