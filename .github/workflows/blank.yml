@@ -18,7 +18,7 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
       - name: Debug - List directory contents
-        run: ls -la
+        run: ls -la && timedatectl
       - name: Run Spigot with 30-second commits and scheduled stop
         # This condition ensures the step doesn't run if the commit message already contains "Auto commit every 30 seconds"
         # to prevent an infinite loop of workflow triggers from self-commits.
