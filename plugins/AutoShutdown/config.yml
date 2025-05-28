@@ -18,10 +18,10 @@ seconds:
 minutes:
    - minute
    - minutes
-startupmessage: "Running AutoShutdown, shutdown scheduled at #time#"
-welcomemessage: "This server is running AutoShutdown, shutdown scheduled at #time#"
+startupmessage: "Running AutoShutdown, shutdown scheduled at #time# UTC"
+welcomemessage: "This server is running AutoShutdown, shutdown scheduled at #time# UTC"
 shutdownmessage: "Server is going for shutdown soon"
 kickmessage: "Server is shutting down, thanks for playing!"
 countdownmessage: "Shutting down in #sec# #seconds#"
-warningmessage: "Autoshutdown scheduled in #min# #minutes# at #time#"
-whenmessage: "#min# #minutes# to shutdown at #time#"
+warningmessage: "Autoshutdown scheduled in #min# #minutes# at #time# UTC"
+whenmessage: "#min# #minutes# to shutdown at #time# UTC"
