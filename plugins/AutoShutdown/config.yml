@@ -1,0 +1,24 @@
+shutdowns:
+   - "00:00"
+warnings:
+   - 2
+   - 5
+   - 10
+   - 15
+   - 20
+   - 30
+   - 45
+   - 60
+seconds:
+   - second
+   - seconds
+minutes:
+   - minute
+   - minutes
+startupmessage: "Running AutoShutdown, shutdown scheduled at #time#"
+welcomemessage: "This server is running AutoShutdown, shutdown scheduled at #time#"
+shutdownmessage: "Server is going for shutdown soon"
+kickmessage: "Server is shutting down, thanks for playing!"
+countdownmessage: "Shutting down in #sec# #seconds#"
+warningmessage: "Autoshutdown scheduled in #min# #minutes# at #time#"
+whenmessage: "#min# #minutes# to shutdown at #time#"
